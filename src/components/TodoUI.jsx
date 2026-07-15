@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTodoStore } from "../store/useTodoStore";
 
 export default function TodoUI() {
@@ -7,13 +7,30 @@ export default function TodoUI() {
 
     const { todos, addTodo, deleteTodo } = useTodoStore();
 
-    const handleAdd = () => {
-        if (value.trim() === "") return;
-        addTodo(value);
-        setValue("");
+    const isWaiting = useRef(false);
+
+    const add = () => {
+        console.log("Add");
     };
 
+    // Throttling
+    const handleAdd = () => {
+        if (isWaiting.current) return;
+        isWaiting.current = true;
+        setTimeout(() => {
+            add();
+            isWaiting.current = false;
+        }, 5000);
+    };
+
+    // const handleAdd = () => {
+    //     if (value.trim() === "") return;
+    //     addTodo(value);
+    //     setValue("");
+    // };
+
     // FIND EVEN NUM COUNT;
+
     const arr = [5, 12, 7, 10, 5, 8, 9, 4, 13, 2, 8, 10];
 
     // const findEvenNum = (a) => {
@@ -145,7 +162,114 @@ export default function TodoUI() {
 
     // console.log("First Occurrence", firstOccurrence(arr));
 
+    // function sortArray(a) {
+    //     for (let i = 1; i < a.length; i++) {
+    //         if (a[i] < a[i - 1]) {
+    //             return false;
+    //         };
+    //     };
+    //     return true;
+    // };
 
+    // console.log("Is Array Sorted", sortArray(arr));
+
+    // const nestedArr = [1, [2, [3, [4]], [7, 8]]];
+
+    // function flatArr(a) {
+    //     let result = [];
+    //     for (const ele of a) {
+    //         if (Array.isArray(ele)) {
+    //             const val = flatArr(ele);
+    //             result.push(...val);
+    //         } else {
+    //             result.push(ele);
+    //         }
+    //     };
+    //     return result;
+    // };
+
+    // console.log("Flattened Array", flatArr(nestedArr));
+
+    // const duplicateArr = [1, 2, 4, 1, 3, 5, 6, 4];
+
+    // function removeDuplicateFromArr(a) {
+    //     a.sort((a, b) => a - b)
+    //     let result = [];
+    //     let firEle = a[0];
+    //     for (let i = 1; i < a?.length; i++) {
+    //         if (a[i] !== firEle) {
+    //             firEle = a[i];
+    //             result.push(a[i]);
+    //         }
+    //     }
+    //     return result;
+    // };
+
+    // console.log("Unique Elements", removeDuplicateFromArr(duplicateArr));
+
+    // function factorialOutput(n) {
+    //     let result = 1;
+    //     for (let i = n; i >= 1; i--) {
+    //         result = result * i;
+    //     };
+    //     return result;
+    // };
+
+    // console.log("Factorial Number", factorialOutput(10));
+
+    // const obj = {
+    //     name: "Chandu",
+    //     greet() {
+    //         console.log(this.name)
+    //     },
+    // };
+
+    // const fn = obj.greet.bind(obj);
+    // console.log(fn())
+
+    // const person = {
+    //     name: "Chandu",
+
+    //     greet() {
+    //         return this.name;
+    //     }
+    // };
+
+    // const another = {
+    //     name: "React"
+    // };
+
+    // another.greet = person.greet;
+
+    // console.log(person.greet());
+    // console.log(another.greet());
+
+    // function greet() {
+    //     console.log("this", this);
+    // };
+
+    // greet();
+
+
+    // Two Pointer Pattern
+
+    function reverseArr(a) {
+        let l = 0;
+        let r = a.length - 1;
+        while (l < r) {
+            let temp = a[l];
+            a[l] = a[r];
+            a[r] = temp;
+            // [a[l], a[r]] = [a[r], a[l]];
+            l++;
+            r--;
+        };
+        return a;
+    };
+
+    // Output = [10,8,2,13,...,10,7,12,5] etc..
+
+    console.log("Reverse An Array", reverseArr(arr));
 
     return (
         <div style={styles.container}>

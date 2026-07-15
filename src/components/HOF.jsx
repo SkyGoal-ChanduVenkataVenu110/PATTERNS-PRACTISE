@@ -23,6 +23,8 @@ export default function HOF() {
     // obj.age = "23";
     // console.log(obj)
 
+
+
     return (
         <div>
             HOF
