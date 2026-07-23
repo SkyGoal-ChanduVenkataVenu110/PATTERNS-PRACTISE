@@ -31,7 +31,7 @@ export default function TodoUI() {
 
     // FIND EVEN NUM COUNT;
 
-    const arr = [5, 12, 7, 10, 5, 8, 9, 4, 13, 2, 8, 10];
+    // const arr = [5, 12, 7, 10, 5, 8, 9, 4, 13, 2, 8, 10];
 
     // const findEvenNum = (a) => {
     //     let count = 0;
@@ -253,23 +253,140 @@ export default function TodoUI() {
 
     // Two Pointer Pattern
 
-    function reverseArr(a) {
-        let l = 0;
-        let r = a.length - 1;
-        while (l < r) {
-            let temp = a[l];
-            a[l] = a[r];
-            a[r] = temp;
-            // [a[l], a[r]] = [a[r], a[l]];
-            l++;
-            r--;
-        };
-        return a;
-    };
+    // function reverseArr(a) {
+    //     let l = 0;
+    //     let r = a.length - 1;
+    //     while (l < r) {
+    //         let temp = a[l];
+    //         a[l] = a[r];
+    //         a[r] = temp;
+    //         // [a[l], a[r]] = [a[r], a[l]];
+    //         l++;
+    //         r--;
+    //     };
+    //     return a;
+    // };
 
     // Output = [10,8,2,13,...,10,7,12,5] etc..
 
-    console.log("Reverse An Array", reverseArr(arr));
+    // console.log("Reverse An Array", reverseArr(arr));
+
+    // const str = "Madam";
+
+    // function isPalindrome(s) {
+
+    //     let l = 0;
+    //     let r = s.length - 1;
+
+    //     while (l < r) {
+    //         if (s[l] !== s[r]) {
+    //             return false;
+    //         };
+    //         l++;
+    //         r--;
+    //     };
+
+    //     return true;
+
+    //     // if (s === duplicateStr) return true;
+    //     // return false;
+    // };
+
+    // console.log("Is Palindrome", isPalindrome(str.toLowerCase()));
+
+    // Give every employee a 10% salary hike, keep the original array unchanged, add a new field:updatedSalary
+
+    // const employeeData = [
+    //     { id: 1, name: "Amit", salary: 50000 },
+    //     { id: 2, name: "Neha", salary: 40000 },
+    //     { id: 3, name: "Ravi", salary: 10000 },
+    // ];
+
+    // const updatedEmpSalary = employeeData.map((item) => ({
+    //     ...item,
+    //     updatedEmpSalary: item?.salary + ((10 / 100) * item?.salary),
+    // }));
+
+    // const updatedEmpSalary = employeeData.map((item) => ({
+    //     ...item,
+    //     ...(item?.salary > 10000 && { updatedEmpSalary: item?.salary + ((10 / 100) * item?.salary) })
+    // }));
+
+    // console.log("Updated Employee Salary", updatedEmpSalary);
+
+    // Find Longest Word in a sentence.
+
+    // const sen = "I love javascript programming language.";
+
+    // function longestWord(s) {
+    //     s.replace(/[^\w\s]/g, "");
+    //     const splitStr = s.split(" ");
+    //     let result = splitStr[0];
+    //     for (let i = 1; i < splitStr.length; i++) {
+    //         if (splitStr[i].length > result.length) {
+    //             result = splitStr[i];
+    //         };
+    //     };
+    //     return result;
+    // };
+
+    // console.log("Longest word", longestWord(sen));
+
+    // const unsortedArr = [100, 1, 500, 6];
+
+    // console.log(unsortedArr.sort())
+
+    // console.log("arr", arr);
+
+    // function removeDuplicateFromArr(a) {
+    //     a.sort((a, b) => a - b);
+    //     let l = 0;
+    //     for (let i = 1; i < a.length; i++) {
+    //         if (a[l] !== a[i]) {
+    //             l++;
+    //             a[l] = a[i];
+    //         };
+    //     };
+    //     console.log(a)
+    //     return l;
+    // };
+
+    // console.log("Remove Duplicates", removeDuplicateFromArr(arr));
+
+
+    // Print Indexes of two array elements, sum equals to target 17
+    // const arr = [7, 15, 9, 10, 6, 1];
+
+    // // Below only works for sorted array
+    // function sumOfTwoElementsToTarget(a) {
+    //     // a.sort((a, b) => a - b);
+    //     const target = 17;
+    //     for (let i = 0; i < a.length; i++) {
+    //         for (let j = i + 1; j < a.length; j++) {
+    //             if ((a[i] + a[j]) === target) {
+    //                 return [i, j];
+    //             };
+    //         };
+    //     };
+    // };
+
+    // console.log("Sum of Two Elements Which equals to target", sumOfTwoElementsToTarget(arr));
+
+    // const arr = [1, 2, 3, 4, 5, 6];
+    // For unsorted arrays if you want to return two indices of elements which equals to target we have to use hashMap
+    // function sumOfTwoElementsToTarget(a) {
+    //     const map = {};
+    //     const target = 10;
+    //     for (let i = 0; i < a.length; i++) {
+    //         const complement = target - a[i];
+    //         if (map[complement] !== undefined) {
+    //             return [map[complement], i];
+    //         };
+    //         map[arr[i]] = i;
+    //     };
+    // };
+
+    // console.log("Sum of Two Elements Which equals to target", sumOfTwoElementsToTarget(arr));
 
     return (
         <div style={styles.container}>
