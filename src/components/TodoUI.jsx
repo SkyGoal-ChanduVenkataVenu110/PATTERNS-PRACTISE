@@ -388,6 +388,20 @@ export default function TodoUI() {
 
     // console.log("Sum of Two Elements Which equals to target", sumOfTwoElementsToTarget(arr));
 
+    const arr = [1, 2, 3, 4, 1, 2, 0];
+
+    function removeDuplicateFromArr(a) {
+        let uniqueItems = [];
+        for (let i = 0; i < a.length; i++) {
+            if (a.indexOf(a[i]) === i) {
+                uniqueItems.push(a[i]);
+            }
+        }
+        return uniqueItems;
+    };
+
+    console.log("Unique Numbers", removeDuplicateFromArr(arr));
+
     return (
         <div style={styles.container}>
             <h2 style={styles.title}>Zustand Task Manager</h2>
