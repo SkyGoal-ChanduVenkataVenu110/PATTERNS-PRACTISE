@@ -149,6 +149,7 @@ export default function TodoUI() {
     // console.log("String Reverse", reverseStr("venu"));
 
     // function firstOccurrence(a) {
+    //     console.log("A", a);
     //     const target = 10;
     //     let result = "";
     //     for (let i = 0; i < a?.length; i++) {
@@ -388,19 +389,88 @@ export default function TodoUI() {
 
     // console.log("Sum of Two Elements Which equals to target", sumOfTwoElementsToTarget(arr));
 
-    const arr = [1, 2, 3, 4, 1, 2, 0];
+    // const arr = [1, 2, 3, 4, 1, 2, 0];
 
-    function removeDuplicateFromArr(a) {
-        let uniqueItems = [];
-        for (let i = 0; i < a.length; i++) {
-            if (a.indexOf(a[i]) === i) {
-                uniqueItems.push(a[i]);
+    // function removeDuplicateFromArr(a) {
+    //     let uniqueItems = [];
+    //     for (let i = 0; i < a.length; i++) {
+    //         if (a.indexOf(a[i]) === i) {
+    //             uniqueItems.push(a[i]);
+    //         }
+    //     }
+    //     return uniqueItems;
+    // };
+
+    // console.log("Unique Numbers", removeDuplicateFromArr(arr));
+
+    // const name = "venkatavenuchandu";
+
+    // function firstOccurrenceInString(str) {
+    //     let result = "";
+    //     let firIndex = str[0];
+    //     for (let i = 1; i < str.length; i++) {
+    //         if (firIndex === str[i]) {
+    //             result = str[i];
+    //         }
+    //     }
+    //     return result;
+    // };
+
+    // console.log("First Occurrence In a String", firstOccurrenceInString(name));
+
+    // const name = "venkatavenuchandu";
+
+    // function firstDuplicateChar(str) {
+    //     let seen = new Set();
+
+    //     for (let i = 0; i < str.length; i++) {
+    //         // If we have already seen this character, it's the first duplicate!
+    //         if (seen.has(str[i])) {
+    //             return `Character: '${str[i]}' at Index: ${i}`;
+    //         }
+    //         seen.add(str[i]);
+    //     }
+    //     return "No duplicate characters found";
+    // }
+
+    // console.log(firstDuplicateChar(name));
+
+    // return first verified admin
+    // const users = [
+    //     { id: 1, name: "Pooja", role: "user", verified: true },
+    //     { id: 2, name: "Rohit", role: "Admin", verified: false },
+    //     { id: 3, name: "Sneha", role: "Moderator", verified: true },
+    //     { id: 4, name: "Amit", role: "Admin", verified: true },
+    //     { id: 5, name: "Neha", role: "user", verified: true },
+    // ];
+
+    // const verifiedAdmin = users.find((item) =>
+    //     item.role === "Admin" && item?.verified
+    // );
+
+    // console.log("Verified Admin", verifiedAdmin);
+
+    // let 
+
+    // Find All Duplicates Numbers
+    const arr = [3, 1, 2, 1, 3, 2, 2, 0];
+
+    function duplicateNumbers(a) {
+        let result = [];
+        for (let i = 0; i < a.length - 1; i++) {
+            for (let j = i + 1; j < a.length - 1; j++) {
+                if (a[i] === a[j]) {
+                    if (!result.includes(a[i])) {
+                        result.push(a[i]);
+                    }
+                    break
+                }
             }
         }
-        return uniqueItems;
+        return result;
     };
 
-    console.log("Unique Numbers", removeDuplicateFromArr(arr));
+    console.log("Duplicate Numbers", duplicateNumbers(arr));
 
     return (
         <div style={styles.container}>
