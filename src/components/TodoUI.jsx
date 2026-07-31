@@ -453,24 +453,157 @@ export default function TodoUI() {
     // let 
 
     // Find All Duplicates Numbers
-    const arr = [3, 1, 2, 1, 3, 2, 2, 0];
 
-    function duplicateNumbers(a) {
-        let result = [];
-        for (let i = 0; i < a.length - 1; i++) {
-            for (let j = i + 1; j < a.length - 1; j++) {
-                if (a[i] === a[j]) {
-                    if (!result.includes(a[i])) {
-                        result.push(a[i]);
-                    }
-                    break
-                }
-            }
-        }
-        return result;
-    };
+    // function duplicateNumbers(a) {
+    //     let result = [];
+    //     for (let i = 0; i < a.length - 1; i++) {
+    //         for (let j = i + 1; j < a.length - 1; j++) {
+    //             if (a[i] === a[j]) {
+    //                 if (!result.includes(a[i])) {
+    //                     result.push(a[i]);
+    //                 };
+    //                 break
+    //             }
+    //         }
+    //     }
+    //     return result;
+    // };
 
-    console.log("Duplicate Numbers", duplicateNumbers(arr));
+    // console.log("Duplicate Numbers", duplicateNumbers(arr));
+
+    // function countFrequency(a) {
+    //     let map = {};
+    //     for (let i = 0; i < a.length; i++) {
+    //         if (map[a[i]] === undefined) {
+    //             map[a[i]] = 1
+    //         } else {
+    //             map[a[i]]++
+    //         }
+    //         // map[a[i]] = (map[a[i]] || 0) + 1;
+    //     };
+    //     return map;
+    // };
+
+    // console.log("Count Frequency", countFrequency(arr));
+
+    // function longestWord(st) {
+    //     let second = "";
+    //     for (const s of st) {
+    //         if (s.length > second.length) {
+    //             second = s;
+    //         }
+    //     };
+    //     return second;
+    // };
+
+    // console.log("Longest Word", longestWord(str));
+
+    // function maxElement(a) {
+    //     let result = a[0];
+    //     for (let i = 1; i < a.length; i++) {
+    //         if (a[i] > result) {
+    //             result = a[i];
+    //         }
+    //     };
+    //     return result;
+    // };
+
+    // console.log("Max Element", maxElement(arr));
+
+    // function sumOfArr(a) {
+    //     let result = 0;
+    //     for (const ele of a) {
+    //         result = result + ele;
+    //     };
+    //     return result;
+    // };
+
+    // console.log("Sum of Array", sumOfArr(arr));
+    // const str = ["React", "Javascript", "HTML"];
+
+    // function findSecondLar(a) {
+    //     let firLar = a[0];
+    //     let secondLar = -Infinity;
+    //     for (let i = 1; i < a.length; i++) {
+    //         if (a[i] > firLar) {
+    //             secondLar = firLar
+    //             firLar = a[i];
+    //         } else if (a[i] <= firLar && a[i] > secondLar) {
+    //             secondLar = a[i];
+    //         }
+    //     }
+    //     return secondLar;
+    // };
+
+    // console.log("Second Largest Number", findSecondLar(arr));
+
+    // function findAverage(a) {
+    //     let sum = 0;
+    //     for (const ele of a) {
+    //         sum += ele
+    //     }
+    //     return sum / a.length;
+    // };
+
+    // console.log("Average of array", findAverage(arr));
+
+    // const arr = [0, 1, 2, 3, 5];
+
+    // Below function checks for ascending to descending order (smallest to largest)
+    // function isArraySorted(a) {
+    //     for (let i = 0; i < a.length; i++) {
+    //         if (a[i] > a[i + 1]) {
+    //             return false;
+    //         };
+    //     }
+    //     return true;
+    // };
+
+    // console.log("Is Array Sorted", isArraySorted(arr));
+
+    // Below approach will only work for sorted array's
+    // function missingNumberForSortedArr(a) {
+    //     for (let i = 0; i < a.length - 1; i++) {
+    //         if (a[i] + 1 !== a[i + 1]) {
+    //             return a[i] + 1;
+    //         }
+    //     }
+    //     return -1;
+    // };
+
+    // console.log("Missing Number", missingNumberForSortedArr(arr));
+
+    // Below works for non-sorted array's
+    // const arr = [5, 2, 1, 0, 3];
+
+    // const totSum = arr.reduce((a, b) => a + b, 0);
+
+    // const n = arr.length;
+
+    // const expectedSum = (n * (n + 1) / 2);
+
+    // console.log("Missed Number", expectedSum - totSum);
+
+    // const arr = [1, 2, 0, 4, 5, 6, 2, 0];
+
+    // const nonZeroEle = arr.filter((item) => item !== 0);
+    // const zeroEle = arr.filter((item) => item === 0);
+    // console.log("Output", [...nonZeroEle, ...zeroEle]);
+
+    // function moveZeroesToEnd(a) {
+    //     let pos = 0;
+    //     for (let i = 0; i < a.length; i++) {
+    //         if (a[i] !== 0) {
+    //             let temp = a[i]; // 1, 2, 4, 5
+    //             a[i] = a[pos] // 1-->1, 2, 4-->0 
+    //             a[pos] = temp; // 1-->1, 2, 0 --> 4
+    //             pos++ // 1, 2, 3
+    //         }
+    //     }
+    //     return a;
+    // };
+
+    // console.log("Move Zeroes To End", moveZeroesToEnd(arr));
 
     return (
         <div style={styles.container}>
