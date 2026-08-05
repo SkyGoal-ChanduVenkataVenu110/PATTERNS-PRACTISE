@@ -590,20 +590,212 @@ export default function TodoUI() {
     // const zeroEle = arr.filter((item) => item === 0);
     // console.log("Output", [...nonZeroEle, ...zeroEle]);
 
+    // const arr = [1, 2, 0, 3, 0, 4, 5, 0];
+
     // function moveZeroesToEnd(a) {
-    //     let pos = 0;
+    //     let left = 0;
     //     for (let i = 0; i < a.length; i++) {
     //         if (a[i] !== 0) {
-    //             let temp = a[i]; // 1, 2, 4, 5
-    //             a[i] = a[pos] // 1-->1, 2, 4-->0 
-    //             a[pos] = temp; // 1-->1, 2, 0 --> 4
-    //             pos++ // 1, 2, 3
+    //             let temp = a[left];
+    //             a[left] = a[i];
+    //             a[i] = temp;
+    //             left++; // 
     //         }
     //     }
     //     return a;
     // };
 
     // console.log("Move Zeroes To End", moveZeroesToEnd(arr));
+
+    // const arr = [1, 2, 3, 4, 5];
+
+    // function rotateAnArrayByOnePosition(a) {
+    //     let right = a[a.length - 1];
+    //     return [right, ...a.slice(0, a.length - 1)];
+    // };
+
+    // console.log("Rotated Array", rotateAnArrayByOnePosition(arr));
+
+    // remove duplicates from sorted array
+    // const arr = [0, 1, 1, 2, 3, 5, 5, 6];
+
+    // function removeDuplicateFromSortedArr(a) {
+    //     let left = 0;
+    //     for (let i = 1; i < a.length; i++) {
+    //         if (a[left] !== a[i]) {
+    //             left++;
+    //             a[left] = a[i];
+    //         }
+    //     }
+    //     return a.slice(0, left + 1);
+    // };
+
+    // console.log("Remove Duplicates from Sorted Array", removeDuplicateFromSortedArr(arr));
+
+    // const arr = [1, 2, 4, 5];
+
+    // function reverseArr(a) {
+    //     let left = 0;
+    //     let right = a.length - 1;
+    //     while (left < right) {
+    //         let temp = a[left];
+    //         a[left] = a[right];
+    //         a[right] = temp;
+    //         left++;
+    //         right--;
+    //     };
+    //     return a;
+    // };
+
+    // console.log("Reversed Array", reverseArr(arr));
+
+    // Shallow Copy
+    // const originalCopy = [1, 2, 3, 4];
+
+    // const duplicateCopy = [...originalCopy];
+    // duplicateCopy[0] = 10
+
+    // console.log("Duplicate", duplicateCopy);
+    // console.log("Original", originalCopy);
+
+    // const originalCopy = [1, 2, 3, 4, [20, 30]];
+    // console.log("Original", originalCopy);
+
+    // const duplicateCopy = [...originalCopy];
+    // duplicateCopy[4][0] = 80
+
+    // console.log("Duplicate", duplicateCopy);
+
+    // // Deep Copy Example 1
+    // const originalCopy = [1, 2, 3, 4, 5, [10, 20, 30]];
+    // const duplicateCopy = JSON.parse(JSON.stringify(originalCopy));
+    // duplicateCopy[5][0] = 100;
+    // console.log("Original Copy from deep", originalCopy);
+    // console.log("Duplicate Copy from deep", duplicateCopy);
+
+    // // //  Deep Copy Example 2
+    // const originalCopy = [1, 2, 3, 4, 5, [10, 20, 30]];
+    // const duplicateCopy = structuredClone(originalCopy);
+    // duplicateCopy[5][0] = 100;
+    // console.log("Original Copy from deep", originalCopy);
+    // console.log("Duplicate Copy from deep", duplicateCopy);
+
+    // const arr = [2, 1, 11, 15]; // Target = 13
+
+    // // Below will works for sorted and unsorted arrays also this is called brute force solution o(n2)
+    // function sumOfTwoElementsToTarget(a) {
+    //     const target = 13;
+    //     for (let i = 0; i < a.length; i++) {
+    //         for (let j = i + 1; j < a.length; j++) {
+    //             if ((a[i] + a[j]) === target) {
+    //                 return [i, j];
+    //             }
+    //         }
+    //     }
+    // };
+
+    // console.log("Find Pair", sumOfTwoElementsToTarget(arr));
+
+    // const input = [
+    //     { id: 1, name: "Mohit", age: 21 },
+    //     { id: 2, name: "Sam", age: 32 },
+    //     { id: 3, name: "Ravi", age: 24 },
+    //     { id: 4, name: "Rohit", age: 32 },
+    //     { id: 5, name: "Amit", age: 21 },
+    // ];
+
+    // function groupByObject(inp) {
+    //     let obj = {};
+    //     inp.forEach((item) => {
+    //         obj[item.age] = inp.filter((i) => i.age === item.age);
+    //     });
+    //     return obj;
+    //     // let obj = {};
+    //     // for (const i of inp) {
+    //     //     if (!obj[i.age]) {
+    //     //         obj[i.age] = [];
+    //     //     }
+    //     //     obj[i.age].push(i)
+    //     // }
+    //     // return obj;
+    // };
+
+    // console.log("Group By Object", groupByObject(input));
+
+    // function reverseStr(str) {
+    //     let result = "";
+    //     for (let i = str.length - 1; i >= 0; i--) {
+    //         result += str[i];
+    //     }
+    //     return result;
+    // };
+
+    // console.log("Reverse a string", reverseStr("chandu"));
+
+    // const nums = [0, 1, 2, 2, 3, 0, 4, 2]; // Remove the val 2 of all occurrences
+
+    // function removeSpecificValFromArr(num) {
+    //     let left = 0;
+    //     for (let i = 0; i < num.length; i++) {
+    //         if (num[i] !== 2) {
+    //             num[left] = num[i];
+    //             left++;
+    //         }
+    //     }
+    //     return num.slice(0, left);
+    // };
+
+    // console.log("Result of arr after removing specific value", removeSpecificValFromArr(nums));
+
+    // Merge Two Sorted Arrays
+    // function mergeTwoSortedArr(arr1, arr2) {
+    //     let result = [];
+    //     let i = 0
+    //     let j = 0;
+
+    //     while (i < arr1.length && j < arr2.length) {
+    //         if (arr1[i] < arr2[j]) {
+    //             result.push(arr1[i]);
+    //             i++;
+    //         } else {
+    //             result.push(arr2[j]);
+    //             j++;
+    //         }
+    //     }
+
+    //     while (j < arr2.length) {
+    //         result.push(arr2[j]);
+    //         j++;
+    //     }
+
+    //     return result;
+    // };
+
+    // console.log("Result of sum", mergeTwoSortedArr([1, 3, 5], [2, 4, 6]));
+
+    // const arr = [-7, -3, 2, 3, 11]; // Output = [4,9,9,49,121];
+
+    // function squareOfSortedArr(a) {
+    //     let result = [];
+    //     for (const ele of a) {
+    //         result.push(ele ** 2);
+    //     }
+    //     return result;
+    // };
+
+    // console.log("Squares of sorted array", squareOfSortedArr(arr));
+
+    // function primeNumbers(nums) {
+    //     let result = [];
+    //     for (const ele of nums) {
+    //         if (ele % 2 !== 0) {
+    //             result.push(ele);
+    //         }
+    //     }
+    //     return result;
+    // };
+
+    // console.log("Prime Numbers", primeNumbers([1, 2, 4, 5, 6, 9, 13, 14, 16]));
 
     return (
         <div style={styles.container}>
