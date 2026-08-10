@@ -1,26 +1,28 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTodoStore } from "../store/useTodoStore";
+import { FiPlus } from "react-icons/fi";
+import { FiMinus } from "react-icons/fi";
 
 export default function TodoUI() {
 
     const [value, setValue] = useState("");
+    const [isAccordionOpen, setIsAccordionOpen] = useState({});
 
     const { todos, addTodo, deleteTodo } = useTodoStore();
 
     const isWaiting = useRef(false);
 
     const add = () => {
-        console.log("Add");
+        console.log("Add Clicked");
     };
 
-    // Throttling
     const handleAdd = () => {
         if (isWaiting.current) return;
         isWaiting.current = true;
         setTimeout(() => {
             add();
             isWaiting.current = false;
-        }, 5000);
+        }, 3000);
     };
 
     // const handleAdd = () => {
@@ -522,9 +524,9 @@ export default function TodoUI() {
     // const str = ["React", "Javascript", "HTML"];
 
     // function findSecondLar(a) {
-    //     let firLar = a[0];
+    //     let firLar = -Infinity;
     //     let secondLar = -Infinity;
-    //     for (let i = 1; i < a.length; i++) {
+    //     for (let i = 0; i < a.length; i++) {
     //         if (a[i] > firLar) {
     //             secondLar = firLar
     //             firLar = a[i];
@@ -535,7 +537,7 @@ export default function TodoUI() {
     //     return secondLar;
     // };
 
-    // console.log("Second Largest Number", findSecondLar(arr));
+    // console.log("Second Largest Number", findSecondLar([1, 2, 3, 4, 6, 5]));
 
     // function findAverage(a) {
     //     let sum = 0;
@@ -797,10 +799,94 @@ export default function TodoUI() {
 
     // console.log("Prime Numbers", primeNumbers([1, 2, 4, 5, 6, 9, 13, 14, 16]));
 
+    // function checkTwoStringsAreReverseOfEachOther(str1, str2) {
+    //     let left = 0;
+    //     let updatedStr2 = str2.split("");
+    //     let right = updatedStr2.length - 1;
+    //     while (left < right) {
+    //         let temp = updatedStr2[left];
+    //         updatedStr2[left] = updatedStr2[right];
+    //         updatedStr2[right] = temp;
+    //         left++;
+    //         right--;
+    //     }
+    //     return str1 === updatedStr2.join("");
+    // };
+
+    // console.log("Two strings are reverse of each other", checkTwoStringsAreReverseOfEachOther("hello", "olleh"));
+
+    // Closures
+    // function createCounter() {
+    //     let count = 0;
+    //     return function () {
+    //         count++;
+    //         return count;
+    //     };
+    // };
+
+    // const counter1 = createCounter();
+    // const counter2 = createCounter();
+
+    // console.log("Counter 1 ------------>", counter1());
+    // console.log("Counter 1", counter1());
+    // console.log("Counter 2", counter2());
+
+    // function findSecondSmallest(arr) {
+    //     let firSmall = Infinity;
+    //     let secSmall = Infinity;
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (arr[i] < firSmall) {
+    //             secSmall = firSmall;
+    //             firSmall = arr[i];
+    //         } else if (arr[i] < secSmall && firSmall !== arr[i]) {
+    //             secSmall = arr[i];
+    //         }
+    //     }
+    //     return secSmall;
+    // };
+
+    // console.log("Second Smallest number", findSecondSmallest([1, 2, 4, 3, 5]));
+
+    const data = [
+        {
+            id: 1,
+            name: "Fruits",
+            strings: ["Apple", "Banana", "Orange"],
+        },
+        {
+            id: 2,
+            name: "Vegetables",
+            strings: ["Potato", "Tomato", "Carrot"],
+        },
+        {
+            id: 3,
+            name: "Animals",
+            strings: ["Dog", "Cat", "Elephant"],
+        },
+    ];
+
+    const handleAccordionOpen = (id) => {
+        setIsAccordionOpen((prev) => ({
+            [id]: !prev[id],
+        }));
+    };
+
+    // const asyncFunction = async () => {
+    //     const res = await 2 + 4;
+    //     return res;
+    // };
+
+    // useEffect(() => {
+    //     (async () => {
+    //         const result = await asyncFunction();
+    //         console.log("Result", result);
+    //     })();
+    //     console.log("Outside async function.");
+    // }, []);
+
     return (
         <div style={styles.container}>
             <h2 style={styles.title}>Zustand Task Manager</h2>
-
             {/* Input */}
             <div style={styles.inputBox}>
                 <input
@@ -835,6 +921,46 @@ export default function TodoUI() {
                     </li>
                 ))}
             </ul>
+
+            {/* Accordion */}
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                }}
+            >
+                {data?.map((item) => (
+                    <div style={{ position: "relative" }} key={item?.id}>
+                        <button
+                            style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                gap: "10px",
+                                width: "100%",
+                                outline: "none"
+                            }}
+                            onClick={() => handleAccordionOpen(item?.id)}
+                        >
+                            <span>{item?.name}</span>
+                            {isAccordionOpen[item?.id] ? <FiMinus style={{ fontSize: "20px" }} /> : <FiPlus style={{ fontSize: "20px" }} />}
+                        </button>
+                        {isAccordionOpen[item?.id] && (
+                            <p
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: "8px"
+                                }}
+                            >
+                                {item?.strings?.map((str) => (
+                                    <span key={str}>{str}</span>
+                                ))}
+                            </p>
+                        )}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
