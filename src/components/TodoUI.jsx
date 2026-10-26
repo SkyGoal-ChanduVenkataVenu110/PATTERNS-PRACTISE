@@ -1,29 +1,17 @@
-import { useEffect, useRef, useState } from "react";
-import { useTodoStore } from "../store/useTodoStore";
-import { FiPlus } from "react-icons/fi";
-import { FiMinus } from "react-icons/fi";
+import { useState } from "react";
+
+const initialData = [];
 
 export default function TodoUI() {
 
-    const [value, setValue] = useState("");
-    const [isAccordionOpen, setIsAccordionOpen] = useState({});
-
-    const { todos, addTodo, deleteTodo } = useTodoStore();
-
-    const isWaiting = useRef(false);
-
-    const add = () => {
-        console.log("Add Clicked");
-    };
-
-    const handleAdd = () => {
-        if (isWaiting.current) return;
-        isWaiting.current = true;
-        setTimeout(() => {
-            add();
-            isWaiting.current = false;
-        }, 3000);
-    };
+    const [applications, setApplications] = useState(initialData);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        mobileNumber: "",
+    });
+    const [editBtn, setEditBtn] = useState(false);
+    const [editRecordId, setEditRecordId] = useState(null);
 
     // const handleAdd = () => {
     //     if (value.trim() === "") return;
@@ -350,11 +338,10 @@ export default function TodoUI() {
     //             a[l] = a[i];
     //         };
     //     };
-    //     console.log(a)
-    //     return l;
+    //     return a.slice(0, l + 1);
     // };
 
-    // console.log("Remove Duplicates", removeDuplicateFromArr(arr));
+    // console.log("Remove Duplicates", removeDuplicateFromArr([1, 2, 3, 1, 2]));
 
 
     // Print Indexes of two array elements, sum equals to target 17
@@ -847,29 +834,6 @@ export default function TodoUI() {
 
     // console.log("Second Smallest number", findSecondSmallest([1, 2, 4, 3, 5]));
 
-    const data = [
-        {
-            id: 1,
-            name: "Fruits",
-            strings: ["Apple", "Banana", "Orange"],
-        },
-        {
-            id: 2,
-            name: "Vegetables",
-            strings: ["Potato", "Tomato", "Carrot"],
-        },
-        {
-            id: 3,
-            name: "Animals",
-            strings: ["Dog", "Cat", "Elephant"],
-        },
-    ];
-
-    const handleAccordionOpen = (id) => {
-        setIsAccordionOpen((prev) => ({
-            [id]: !prev[id],
-        }));
-    };
 
     // const asyncFunction = async () => {
     //     const res = await 2 + 4;
@@ -884,139 +848,307 @@ export default function TodoUI() {
     //     console.log("Outside async function.");
     // }, []);
 
+    // function Dog(name) {
+    //     this.name = name;
+    // };
+
+    // const dog = new Dog("Rex");
+
+    // Dog.prototype.speak = () => "woof";
+
+    // console.log(dog.speak());
+
+    // let arr = [10, 20, 30];
+    // arr.map((item) => item / 10);
+    // console.log(arr); // [10,20,30] map will not mutate original, create new array but new array not assigned to any variable
+
+    // const arr = [5, 6, 7];
+    // arr.pop();// Shift removes first element, Unshift adds to first, pop removes last element
+    // console.log(arr);
+
+    // const arr = [1, 2, 3];
+    // const arr2 = arr.reduce((a, b) => a + b);
+    // console.log(arr2);
+
+    // function isPrime(num) {
+    //     if (num <= 1) {
+    //         return false;
+    //     };
+    //     for (let i = 2; i < num; i++) {
+    //         if (num % i === 0) {
+    //             return false;
+    //         };
+    //     }
+    //     return true;
+    // };
+
+    // console.log("Is Prime", isPrime(49));
+
+    // function countFrequency(arr) {
+    //     let countMap = {};
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (countMap[arr[i]]) {
+    //             countMap[arr[i]] += 1
+    //         } else {
+    //             countMap[arr[i]] = 1;
+    //         }
+    //     }
+    //     return countMap;
+    // };
+
+    // console.log("Frequency Count", countFrequency([1, 2, 3, 4, 1, 2]));
+
+    // function countChar(str, char) {
+    //     let count = 0;
+    //     for (const s of str) {
+    //         if (s === char) {
+    //             count++;
+    //         }
+    //     }
+    //     return count;
+    // };
+
+    // console.log("countChar", countChar('GeeksForGeeks', 'e'));
+
+    // function fibonacciNums(n) {
+    //     let num1 = 0;
+    //     let num2 = 1;
+    //     let nextNum;
+    //     for (let i = 1; i <= n; i++) {
+    //         console.log("Number", num1);
+    //         nextNum = num1 + num2;
+    //         num1 = num2;
+    //         num2 = nextNum;
+    //     }
+    // };
+
+    // console.log("Fibonacci Numbers", fibonacciNums(10));
+
+    // function sortArrayInAscOrder(arr) {
+    //     for (let i = 0; i < arr.length; i++) {
+    //         for (let j = i + 1; j < arr.length; j++) {
+    //             if (arr[i] > arr[j]) {
+    //                 let temp = arr[i];
+    //                 arr[i] = arr[j];
+    //                 arr[j] = temp;
+    //             }
+    //         }
+    //     }
+    //     return arr;
+    // };
+
+    // console.log("Ascending Order Array", sortArrayInAscOrder([1, 3, 5, 2, 4]));
+
+    // Separate positive and negative numbers
+    // const numbers = [10, -5, 20, -8, 15];
+
+    // const positiveNums = [];
+    // const negativeNums = [];
+
+    // for (const val of numbers) {
+    //     if (val < 0) {
+    //         negativeNums.push(val);
+    //     } else {
+    //         positiveNums.push(val);
+    //     }
+    // };
+
+    // console.log("Positive Numbers", positiveNums);
+    // console.log("Negative Numbers", negativeNums);
+
+    const handleEdit = (id) => {
+        setEditBtn(true);
+        const obj = applications.find((item) => item.id === id);
+        setFormData({ ...obj });
+        setEditRecordId(id);
+    };
+
+    const handleDelete = (id) => {
+        setApplications((prev) => prev.filter((item) => item.id !== id));
+    };
+
+    const handleInputChange = (i, e) => {
+        setFormData((prev) => ({
+            ...prev,
+            [i]: e.target.value,
+        }));
+    };
+
+    const handleAddNew = (e) => {
+        e.preventDefault();
+        if (!formData.email.trim() || !formData.name.trim() || !formData.mobileNumber.trim()) {
+            return;
+        };
+        if (editRecordId !== null) {
+            setApplications((prev) => prev.map((item) => item.id === editRecordId ? { ...item, ...formData } : item));
+            setEditBtn(false);
+            setEditRecordId(null);
+        } else {
+            setApplications((prev) => [...prev, { id: Date.now(), ...formData }]);
+        }
+        setFormData({
+            name: "",
+            mobileNumber: "",
+            email: ""
+        });
+    };
+
     return (
+
         <div style={styles.container}>
-            <h2 style={styles.title}>Zustand Task Manager</h2>
-            {/* Input */}
-            <div style={styles.inputBox}>
+            <h2 style={styles.title}>Task Manager</h2>
+
+            {/* Input Fields */}
+            <form style={styles.form} onSubmit={handleAddNew}>
                 <input
+                    type="text"
+                    placeholder="Enter Name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange("name", e)}
                     style={styles.input}
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                    placeholder="Enter a task..."
                 />
-                <button style={styles.addBtn} onClick={handleAdd}>
-                    Add
+                <input
+                    type="email"
+                    placeholder="Enter Email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e)}
+                    style={styles.input}
+                />
+                <input
+                    type="tel"
+                    placeholder="Enter Mobile Number"
+                    value={formData.mobileNumber}
+                    onChange={(e) => handleInputChange("mobileNumber", e)}
+                    style={styles.input}
+                />
+                <button
+                    type="submit"
+                    style={styles.addButton}
+                >
+                    {editBtn ? "Update" : "Add"}
                 </button>
-            </div>
+            </form>
 
-            {/* Tasks */}
-            <ul style={styles.list}>
-                {todos.map((todo) => (
-                    <li
-                        key={todo.id}
-                        style={{
-                            ...styles.item,
-                            textDecoration: todo.completed ? "line-through" : "none",
-                        }}
-                    >
-                        <span>{todo.title}</span>
+            {/* Applications List */}
+            <div style={styles.listContainer}>
+                {applications.length > 0 ? (
+                    applications.map((application) => (
+                        <div key={application.id} style={styles.row}>
+                            <span style={styles.cell}>{application.name}</span>
+                            <span style={styles.cell}>{application.email}</span>
+                            <span style={styles.cell}>{application.mobileNumber}</span>
 
-                        <button
-                            style={styles.deleteBtn}
-                            onClick={() => deleteTodo(todo.id)}
-                        >
-                            ✖
-                        </button>
-                    </li>
-                ))}
-            </ul>
+                            <div style={styles.actions}>
+                                <button
+                                    type="button"
+                                    onClick={() => handleEdit(application.id)}
+                                    style={styles.editButton}
+                                >
+                                    Edit
+                                </button>
 
-            {/* Accordion */}
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "10px",
-                }}
-            >
-                {data?.map((item) => (
-                    <div style={{ position: "relative" }} key={item?.id}>
-                        <button
-                            style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                                gap: "10px",
-                                width: "100%",
-                                outline: "none"
-                            }}
-                            onClick={() => handleAccordionOpen(item?.id)}
-                        >
-                            <span>{item?.name}</span>
-                            {isAccordionOpen[item?.id] ? <FiMinus style={{ fontSize: "20px" }} /> : <FiPlus style={{ fontSize: "20px" }} />}
-                        </button>
-                        {isAccordionOpen[item?.id] && (
-                            <p
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: "8px"
-                                }}
-                            >
-                                {item?.strings?.map((str) => (
-                                    <span key={str}>{str}</span>
-                                ))}
-                            </p>
-                        )}
-                    </div>
-                ))}
+                                <button
+                                    type="button"
+                                    onClick={() => handleDelete(application.id)}
+                                    style={styles.deleteButton}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <p style={styles.emptyMessage}>No data available.</p>
+                )}
             </div>
         </div>
+
     );
 }
 
-// Inline styles for quick demo
+
 const styles = {
     container: {
-        maxWidth: "420px",
-        margin: "40px auto",
+        maxWidth: "1100px",
+        margin: "30px auto",
         padding: "20px",
-        borderRadius: "12px",
-        background: "#f0f4ff",
-        boxShadow: "0 3px 8px rgba(0,0,0,0.1)",
-        fontFamily: "sans-serif",
+        fontFamily: "Arial, sans-serif",
+        boxSizing: "border-box",
     },
     title: {
         textAlign: "center",
-        marginBottom: "15px",
+        marginBottom: "24px",
     },
-    inputBox: {
-        display: "flex",
-        gap: "10px",
+    form: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1.5fr 1fr auto",
+        gap: "12px",
+        marginBottom: "20px",
     },
     input: {
-        flex: 1,
+        width: "100%",
+        minWidth: 0,
         padding: "10px",
-        borderRadius: "6px",
         border: "1px solid #ccc",
+        borderRadius: "5px",
+        outline: "none",
+        boxSizing: "border-box",
     },
-    addBtn: {
-        padding: "10px 16px",
-        background: "#2563eb",
-        color: "#fff",
+    addButton: {
+        padding: "10px 22px",
         border: "none",
-        borderRadius: "6px",
+        borderRadius: "5px",
+        backgroundColor: "green",
+        color: "white",
         cursor: "pointer",
+        whiteSpace: "nowrap",
     },
-    list: {
-        marginTop: "20px",
-        padding: 0,
-        listStyle: "none",
-    },
-    item: {
-        padding: "10px 12px",
-        background: "#fff",
-        borderRadius: "6px",
-        marginBottom: "10px",
+    listContainer: {
         display: "flex",
-        justifyContent: "space-between",
-        cursor: "pointer",
-        border: "1px solid #ddd",
+        flexDirection: "column",
+        gap: "10px",
     },
-    deleteBtn: {
-        background: "transparent",
+    row: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1.5fr 1fr auto",
+        gap: "12px",
+        alignItems: "center",
+        padding: "12px",
+        border: "1px solid #e0e0e0",
+        borderRadius: "6px",
+        boxSizing: "border-box",
+    },
+    cell: {
+        minWidth: 0,
+        overflowWrap: "anywhere",
+    },
+    actions: {
+        display: "flex",
+        gap: "8px",
+        justifyContent: "flex-end",
+    },
+    editButton: {
+        padding: "8px 14px",
         border: "none",
-        color: "red",
+        borderRadius: "5px",
+        backgroundColor: "orange",
+        color: "white",
         cursor: "pointer",
+        whiteSpace: "nowrap",
+    },
+    deleteButton: {
+        padding: "8px 14px",
+        border: "none",
+        borderRadius: "5px",
+        backgroundColor: "red",
+        color: "white",
+        cursor: "pointer",
+        whiteSpace: "nowrap",
+    },
+    emptyMessage: {
+        textAlign: "center",
+        color: "#777",
+        padding: "20px",
     },
 };
+
